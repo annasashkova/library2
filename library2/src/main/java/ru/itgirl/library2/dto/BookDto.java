@@ -1,4 +1,4 @@
-package ru.itgirl.library2.DTO;
+package ru.itgirl.library2.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

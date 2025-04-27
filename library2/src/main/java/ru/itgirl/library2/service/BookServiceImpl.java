@@ -7,15 +7,19 @@ import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import ru.itgirl.library2.DTO.BookDto;
+import ru.itgirl.library2.dto.BookCreateDTO;
+import ru.itgirl.library2.dto.BookDto;
+import ru.itgirl.library2.dto.BookUpdateDTO;
 import ru.itgirl.library2.model.Book;
 import ru.itgirl.library2.repository.BookRepository;
+import ru.itgirl.library2.repository.GenreRepository;
 
 @Service
 @RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
+    private final GenreRepository genreRepository;
 
     @Override
     public BookDto getByNameV1(String name) {
@@ -42,6 +46,35 @@ public class BookServiceImpl implements BookService {
 
         Book book = bookRepository.findOne(specification).orElseThrow();
         return convertEntityToDto(book);
+    }
+
+    @Override
+    public BookDto createBook(BookCreateDTO bookCreateDTO) {
+        Book book = bookRepository.save(convertDtoToEntity(bookCreateDTO));
+        BookDto bookDto = convertEntityToDto(book);
+        return bookDto;
+    }
+
+    @Override
+    public BookDto updateBook(BookUpdateDTO bookUpdateDTO) {
+        Book book = bookRepository.findById(bookUpdateDTO.getGenreId()).orElseThrow();
+        book.setName(bookUpdateDTO.getName());
+        book.setGenre(genreRepository.findById(bookUpdateDTO.getGenreId()).get());
+        Book savedBook = bookRepository.save(book);
+        BookDto bookDto = convertEntityToDto(savedBook);
+        return bookDto;
+    }
+
+    @Override
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    private Book convertDtoToEntity(BookCreateDTO bookCreateDTO) {
+        return Book.builder().
+                name(bookCreateDTO.getName()).
+                genre(genreRepository.findById(bookCreateDTO.getGenreId()).get()).
+                build();
     }
 
     private BookDto convertEntityToDto(Book book) {

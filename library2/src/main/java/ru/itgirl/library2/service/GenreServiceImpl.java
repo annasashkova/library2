@@ -2,9 +2,9 @@ package ru.itgirl.library2.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.itgirl.library2.DTO.AuthorDto;
-import ru.itgirl.library2.DTO.BookDto;
-import ru.itgirl.library2.DTO.GenreDTO;
+import ru.itgirl.library2.dto.AuthorDto;
+import ru.itgirl.library2.dto.BookDto;
+import ru.itgirl.library2.dto.GenreDTO;
 import ru.itgirl.library2.model.Genre;
 import ru.itgirl.library2.repository.GenreRepository;
 

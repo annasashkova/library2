@@ -1,11 +1,10 @@
 package ru.itgirl.library2.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import ru.itgirl.library2.DTO.AuthorDto;
+import org.springframework.web.bind.annotation.*;
+import ru.itgirl.library2.dto.AuthorCreateDto;
+import ru.itgirl.library2.dto.AuthorDto;
+import ru.itgirl.library2.dto.AuthorUpdateDto;
 import ru.itgirl.library2.service.AuthorService;
 
 @RestController
@@ -20,17 +19,32 @@ public class AuthorController {
     }
 
     @GetMapping("/author")
-    AuthorDto getAuthorByName(@RequestParam("name")String name) {
+    AuthorDto getAuthorByName(@RequestParam("name") String name) {
         return authorService.getAuthorByName(name);
     }
 
     @GetMapping("/author/v2")
-    AuthorDto getAuthorByNameBySQL(@RequestParam("name")String name) {
+    AuthorDto getAuthorByNameBySQL(@RequestParam("name") String name) {
         return authorService.getAuthorByNameV2(name);
     }
 
     @GetMapping("/author/v3")
-    AuthorDto getAuthorByNameV3(@RequestParam("name")String name) {
+    AuthorDto getAuthorByNameV3(@RequestParam("name") String name) {
         return authorService.getAuthorByNameV3(name);
+    }
+
+    @PostMapping("/author/create")
+    AuthorDto createAuthor(@RequestBody AuthorCreateDto authorCreateDto) {
+        return authorService.createAuthor(authorCreateDto);
+    }
+
+    @PutMapping("/author/update")
+    AuthorDto updateAuthor(@RequestBody AuthorUpdateDto authorUpdateDto) {
+        return authorService.updateAuthor(authorUpdateDto);
+    }
+
+    @DeleteMapping("/author/delete/{id}")
+    void deleteAuthor(@PathVariable("id") Long id) {
+        authorService.deleteAuthor(id);
     }
 }
