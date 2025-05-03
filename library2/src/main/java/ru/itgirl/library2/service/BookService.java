@@ -4,6 +4,8 @@ import ru.itgirl.library2.dto.BookCreateDTO;
 import ru.itgirl.library2.dto.BookDto;
 import ru.itgirl.library2.dto.BookUpdateDTO;
 
+import java.util.List;
+
 public interface BookService {
     BookDto getByNameV1(String name);
 
@@ -16,4 +18,6 @@ public interface BookService {
     BookDto updateBook(BookUpdateDTO bookUpdateDTO);
 
     void deleteBook(Long id);
+
+    List<BookDto> getAllBooks();
 }
