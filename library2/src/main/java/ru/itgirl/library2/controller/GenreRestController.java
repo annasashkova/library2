@@ -1,5 +1,6 @@
 package ru.itgirl.library2.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +10,8 @@ import ru.itgirl.library2.service.GenreService;
 
 @RestController
 @RequiredArgsConstructor
-public class GenreController {
+@SecurityRequirement(name = "library-users")
+public class GenreRestController {
 
     private final GenreService genreService;
 

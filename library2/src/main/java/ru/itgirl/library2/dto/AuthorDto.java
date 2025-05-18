@@ -10,6 +10,7 @@ import java.util.List;
 @Setter
 @Getter
 @Builder
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuthorDto {
     private Long id;

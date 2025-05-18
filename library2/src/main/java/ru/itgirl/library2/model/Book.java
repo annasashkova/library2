@@ -11,6 +11,7 @@ import java.util.Set;
 @Setter
 @Getter
 @Builder
+@ToString
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,10 +1,7 @@
 package ru.itgirl.library2.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
@@ -12,6 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
+@ToString
 public class AppUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

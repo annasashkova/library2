@@ -1,5 +1,6 @@
 package ru.itgirl.library2.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,8 @@ import ru.itgirl.library2.repository.AppUserRepository;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class RegistrationController {
+@SecurityRequirement(name = "library-users")
+public class RegistrationRestController {
     private final AppUserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 

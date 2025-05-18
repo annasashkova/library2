@@ -10,6 +10,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 @Builder
+@ToString
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
