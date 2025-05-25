@@ -12,9 +12,9 @@ import java.util.List;
 @Builder
 @ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BookDto {
+public class AuthorDTO {
     private Long id;
     private String name;
-    private String genre;
-    private List<AuthorDto> authors;
+    private String surname;
+    private List<BookDTO> books;
 }

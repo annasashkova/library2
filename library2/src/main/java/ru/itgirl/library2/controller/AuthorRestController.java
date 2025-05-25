@@ -5,7 +5,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.itgirl.library2.dto.AuthorCreateDTO;
-import ru.itgirl.library2.dto.AuthorDto;
+import ru.itgirl.library2.dto.AuthorDTO;
 import ru.itgirl.library2.dto.AuthorUpdateDTO;
 import ru.itgirl.library2.service.AuthorService;
 
@@ -17,32 +17,32 @@ public class AuthorRestController {
     private final AuthorService authorService;
 
     @GetMapping("/author/{id}")
-    AuthorDto getAuthorById(@PathVariable Long id) {
+    AuthorDTO getAuthorById(@PathVariable Long id) {
         return authorService.getAuthorById(id);
     }
 
     @GetMapping("/author")
-    AuthorDto getAuthorByName(@RequestParam("name") String name) {
+    AuthorDTO getAuthorByName(@RequestParam("name") String name) {
         return authorService.getAuthorByName(name);
     }
 
     @GetMapping("/author/v2")
-    AuthorDto getAuthorByNameBySQL(@RequestParam("name") String name) {
+    AuthorDTO getAuthorByNameBySQL(@RequestParam("name") String name) {
         return authorService.getAuthorByNameV2(name);
     }
 
     @GetMapping("/author/v3")
-    AuthorDto getAuthorByNameV3(@RequestParam("name") String name) {
+    AuthorDTO getAuthorByNameV3(@RequestParam("name") String name) {
         return authorService.getAuthorByNameV3(name);
     }
 
     @PostMapping("/author/create")
-    AuthorDto createAuthor(@RequestBody @Valid AuthorCreateDTO authorCreateDto) {
+    AuthorDTO createAuthor(@RequestBody @Valid AuthorCreateDTO authorCreateDto) {
         return authorService.createAuthor(authorCreateDto);
     }
 
     @PutMapping("/author/update")
-    AuthorDto updateAuthor(@RequestBody @Valid AuthorUpdateDTO authorUpdateDto) {
+    AuthorDTO updateAuthor(@RequestBody @Valid AuthorUpdateDTO authorUpdateDto) {
         return authorService.updateAuthor(authorUpdateDto);
     }
 

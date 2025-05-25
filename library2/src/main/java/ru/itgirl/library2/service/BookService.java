@@ -1,23 +1,23 @@
 package ru.itgirl.library2.service;
 
 import ru.itgirl.library2.dto.BookCreateDTO;
-import ru.itgirl.library2.dto.BookDto;
+import ru.itgirl.library2.dto.BookDTO;
 import ru.itgirl.library2.dto.BookUpdateDTO;
 
 import java.util.List;
 
 public interface BookService {
-    BookDto getByNameV1(String name);
+    BookDTO getByNameV1(String name);
 
-    BookDto getByNameV2(String name);
+    BookDTO getByNameV2(String name);
 
-    BookDto getByNameV3(String name);
+    BookDTO getByNameV3(String name);
 
-    BookDto createBook(BookCreateDTO bookCreateDTO);
+    BookDTO createBook(BookCreateDTO bookCreateDTO);
 
-    BookDto updateBook(BookUpdateDTO bookUpdateDTO);
+    BookDTO updateBook(BookUpdateDTO bookUpdateDTO);
 
     void deleteBook(Long id);
 
-    List<BookDto> getAllBooks();
+    List<BookDTO> getAllBooks();
 }

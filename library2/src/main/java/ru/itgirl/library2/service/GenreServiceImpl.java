@@ -3,8 +3,8 @@ package ru.itgirl.library2.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import ru.itgirl.library2.dto.AuthorDto;
-import ru.itgirl.library2.dto.BookDto;
+import ru.itgirl.library2.dto.AuthorDTO;
+import ru.itgirl.library2.dto.BookDTO;
 import ru.itgirl.library2.dto.GenreDTO;
 import ru.itgirl.library2.model.Genre;
 import ru.itgirl.library2.repository.GenreRepository;
@@ -33,13 +33,13 @@ public class GenreServiceImpl implements GenreService {
     }
 
     private GenreDTO convertToDto(Genre genre) {
-        List<BookDto> bookDtoList = genre.getBooks()
+        List<BookDTO> bookDtoList = genre.getBooks()
                 .stream()
-                .map(book -> BookDto.builder()
+                .map(book -> BookDTO.builder()
                         .id(book.getId())
                         .name(book.getName())
                         .authors(book.getAuthors().stream()
-                                .map(author -> AuthorDto.builder()
+                                .map(author -> AuthorDTO.builder()
                                         .id(author.getId())
                                         .name(author.getName())
                                         .surname(author.getSurname())

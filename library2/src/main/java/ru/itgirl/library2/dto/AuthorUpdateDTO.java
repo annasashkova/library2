@@ -11,7 +11,7 @@ import lombok.*;
 @Builder
 @ToString
 public class AuthorUpdateDTO {
-    @NotBlank(message = "Необходимо указать id автора")
+    @NotNull(message = "Необходимо указать id автора")
     private Long id;
     @Size(min = 3, max = 10)
     @NotBlank(message = "Необходимо указать имя")
